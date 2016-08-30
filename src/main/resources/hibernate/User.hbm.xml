@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="net.orion.userAdmin.user.domain.User" table="users">
+        <id name="id" type="long" column="user_id" >
+            <generator class="native"/>
+        </id>
+        <property name="name">
+            <column name="name" />
+        </property>
+        <property name="login">
+            <column name="login" />
+        </property>
+        <property name="password">
+            <column name="password" />
+        </property>
+        <property name="email">
+            <column name="email" />
+        </property>
+        <property name="phone">
+            <column name="phone" />
+        </property>
+        <property name="note">
+            <column name="note" />
+        </property>
+        <property name="enabled">
+            <column name="enabled" />
+        </property>
+        <set name="rolesAsStrings" table="user_roles">
+            <key column="user_id" not-null="true" />
+            <element column="authority" type="java.lang.String" />
+        </set>
+        <joined-subclass name="net.orion.userAdmin.user.domain.Teacher" table="teacher">
+            <key column="teacher_id" />
+            <many-to-one name="branch" class="net.orion.userAdmin.reference.domain.Branch" column="branch_id" lazy="false" />
+        </joined-subclass>
+        <joined-subclass name="net.orion.userAdmin.user.domain.Learner" table="learner">
+            <key column="learner_id" />
+            <many-to-one name="branch" class="net.orion.userAdmin.reference.domain.Branch" column="branch_id" lazy="false" />
+        </joined-subclass>
+    </class>
+</hibernate-mapping>
