@@ -2,14 +2,14 @@
 
 Part 2: [https://github.com/olendii/devel-java_rest_angularjs-front-end]
  
-Java
-Spring MVC
-Hibernate
-REST
-DDD
-JavaScript
-AngularJS
-Bootstrap
+* Java
+* Spring MVC
+* Hibernate
+* REST
+* DDD
+* JavaScript
+* AngularJS
+* Bootstrap
 
 ToDo:
-Spring Security
+* Spring Security
