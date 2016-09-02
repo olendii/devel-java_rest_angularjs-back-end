@@ -2,7 +2,7 @@ package net.orion.userAdmin.reference.controller.dto;
 
 public class BranchFormDto {
 
-    private short id;
+    private Short id;
     private String name;
     private Boolean isEnabled;
 
