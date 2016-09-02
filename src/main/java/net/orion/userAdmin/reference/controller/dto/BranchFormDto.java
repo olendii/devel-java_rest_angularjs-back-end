@@ -6,11 +6,11 @@ public class BranchFormDto {
     private String name;
     private Boolean isEnabled;
 
-    public short getId() {
+    public Short getId() {
         return id;
     }
 
-    public void setId(short id) {
+    public void setId(Short id) {
         this.id = id;
     }
 
