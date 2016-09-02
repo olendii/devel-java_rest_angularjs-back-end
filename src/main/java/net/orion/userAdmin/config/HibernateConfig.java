@@ -1,5 +1,7 @@
 package net.orion.userAdmin.config;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -42,9 +44,18 @@ public class HibernateConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
-        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
-        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        try {
+            URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
+            String username = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            String dbUrl = "jdbc:mysql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?" +
+                    environment.getRequiredProperty("jdbc.props");
+            dataSource.setUrl(dbUrl);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         return dataSource;
     }
 
