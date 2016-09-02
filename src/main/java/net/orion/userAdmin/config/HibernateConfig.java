@@ -48,7 +48,7 @@ public class HibernateConfig {
             URI dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"));
             String username = dbUri.getUserInfo().split(":")[0];
             String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:mysql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?" +
+            String dbUrl = "jdbc:mysql://" + dbUri.getHost() + ':' + "3306" + dbUri.getPath() + "?" +
                     environment.getRequiredProperty("jdbc.props");
             dataSource.setUrl(dbUrl);
             dataSource.setUsername(username);
