@@ -14,4 +14,4 @@ Part 2: [https://github.com/olendii/devel-java_rest_angularjs-front-end]
 ToDo:
 * Spring Security
 
-Demo: [http://useradmin.art-it.com.ua]
+Demo: [http://useradmin.art-it.com.ua] (wait for wake up).
